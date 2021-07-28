@@ -8,25 +8,36 @@
  */
 var progrex_frontend;
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/main.ts":
 /*!*********************!*\
   !*** ./src/main.ts ***!
   \*********************/
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (factory) {\n    if ( true && typeof module.exports === \"object\") {\n        var v = factory(__webpack_require__(\"./src sync recursive\"), exports);\n        if (v !== undefined) module.exports = v;\n    }\n    else if (true) {\n        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),\n\t\t__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?\n\t\t(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),\n\t\t__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));\n    }\n})(function (require, exports) {\n    \"use strict\";\n    Object.defineProperty(exports, \"__esModule\", { value: true });\n    exports.render = void 0;\n    function render() {\n        const h = document.createElement('h');\n        h.textContent = 'Oh Oh Oh!!!';\n        document.body.appendChild(h);\n    }\n    exports.render = render;\n});\n\n\n//# sourceURL=webpack://progrex_frontend/./src/main.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.render = void 0;\nconst renderer_1 = __webpack_require__(/*! ./renderer */ \"./src/renderer.ts\");\nfunction render() {\n    const canvas = document.createElement('canvas');\n    canvas.width = 600;\n    canvas.height = 150;\n    document.body.appendChild(canvas);\n    renderer = new renderer_1.Renderer(canvas);\n    renderer.start();\n}\nexports.render = render;\nlet renderer;\nrender();\n\n\n//# sourceURL=webpack://progrex_frontend/./src/main.ts?");
 
 /***/ }),
 
-/***/ "./src sync recursive":
-/*!*******************!*\
-  !*** ./src/ sync ***!
-  \*******************/
-/***/ ((module) => {
+/***/ "./src/renderer.ts":
+/*!*************************!*\
+  !*** ./src/renderer.ts ***!
+  \*************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("function webpackEmptyContext(req) {\n\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\te.code = 'MODULE_NOT_FOUND';\n\tthrow e;\n}\nwebpackEmptyContext.keys = () => ([]);\nwebpackEmptyContext.resolve = webpackEmptyContext;\nwebpackEmptyContext.id = \"./src sync recursive\";\nmodule.exports = webpackEmptyContext;\n\n//# sourceURL=webpack://progrex_frontend/./src/_sync?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Renderer = void 0;\nconst utils_1 = __webpack_require__(/*! ./utils */ \"./src/utils.ts\");\nclass Renderer {\n    constructor(canvas) {\n        this.t = 0;\n        this.canvas = canvas;\n        this.context = utils_1.nonnull(canvas.getContext('2d'));\n    }\n    start() {\n        window.requestAnimationFrame((ts) => this.on_frame(ts));\n    }\n    on_frame(timestamp) {\n        this.draw_frame(timestamp);\n        window.requestAnimationFrame((ts) => this.on_frame(ts));\n    }\n    draw_frame(timestamp) {\n        console.log(timestamp);\n        this.context.fillStyle = 'rgb(255,255,255)';\n        this.context.fillRect(0, 0, 600, 150);\n        const x = Math.sin((2 * Math.PI * this.t) / 60.0) * 300 + 300;\n        this.context.fillStyle = 'rgb(0,0,255)';\n        this.context.fillRect(x, 10, 100, 100);\n        this.t += 1;\n    }\n}\nexports.Renderer = Renderer;\n\n\n//# sourceURL=webpack://progrex_frontend/./src/renderer.ts?");
+
+/***/ }),
+
+/***/ "./src/utils.ts":
+/*!**********************!*\
+  !*** ./src/utils.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.nonnull = void 0;\nfunction nonnull(value) {\n    // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion\n    return value;\n}\nexports.nonnull = nonnull;\n\n\n//# sourceURL=webpack://progrex_frontend/./src/utils.ts?");
 
 /***/ })
 
@@ -57,16 +68,10 @@ eval("function webpackEmptyContext(req) {\n\tvar e = new Error(\"Cannot find mod
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/main.ts");
 /******/ 	progrex_frontend = __webpack_exports__;
 /******/ 	

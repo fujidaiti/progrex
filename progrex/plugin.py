@@ -8,6 +8,7 @@ from werkzeug import wrappers
 
 class ProgrexPlugin(base_plugin.TBPlugin):
     plugin_name = 'progrex'
+    entry_point = 'index.js'
 
     def __init__(self, context):
         super().__init__(context)
@@ -22,7 +23,8 @@ class ProgrexPlugin(base_plugin.TBPlugin):
 
     def frontend_metadata(self):
         return base_plugin.FrontendMetadata(
-            es_module_path='/index.js', tab_name='Progress')
+            es_module_path='/%s' % self.entry_point,
+            tab_name='Progress')
 
     @wrappers.Request.application
     def _serve_js(self, request):
@@ -30,7 +32,7 @@ class ProgrexPlugin(base_plugin.TBPlugin):
         filepath = os.path.join(
             os.path.dirname(__file__),
             "static",
-            "index.js")
+            self.entry_point)
         with open(filepath) as infile:
             contents = infile.read()
         return werkzeug.Response(

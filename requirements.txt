@@ -65,7 +65,7 @@ parso @ file:///tmp/build/80754af9/parso_1617223946239/work
 pexpect @ file:///tmp/build/80754af9/pexpect_1605563209008/work
 pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
 Pillow @ file:///tmp/build/80754af9/pillow_1617386154241/work
--e git+git@github.com:hirameunagi/p-trex.git@ae86fbd875513005b7a5cedfeedf605b0e2403cf#egg=progrex
+-e git+git@github.com:hirameunagi/progrex.git@656f5e49581f72f7ebe0bbab460a614dfe35ac96#egg=progrex
 prometheus-client @ file:///tmp/build/80754af9/prometheus_client_1623189609245/work
 prompt-toolkit @ file:///tmp/build/80754af9/prompt-toolkit_1616415428029/work
 protobuf==3.17.3

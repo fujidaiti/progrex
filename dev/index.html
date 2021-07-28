@@ -1,88 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
 
-<head>
-  <meta charset="utf-8">
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <meta name="author" content="SitePoint" />
+  </head>
 
-  <title>The HTML5 Herald</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-
-</head>
-
-<body>
-  <canvas id="canvas" />
-</body>
-
-<script>
-
-  const sprite_url = 'https://raw.githubusercontent.com/wayou/t-rex-runner/gh-pages/assets/default_200_percent/200-offline-sprite.png';
-
-  class Sprite {
-    constructor() {
-      this.img = new Image();
-      this.trex = new RunningTRex(this.img);
-    }
-
-    prepare(listener) {
-      this.img.addEventListener('load', listener);
-      this.img.src = sprite_url;
-    }
-  }
-
-  class RunningTRex {
-    constructor(img) {
-      this.state = 0;
-      this.img = img;
-    }
-
-    forawrd() {
-      this.state = (this.state + 1) % 2;
-    }
-
-    draw(context, x, y, w, h) {
-      if (this.state == 0) {
-        context.drawImage(this.img, 1860, 0, 100, 100, x, y, w, h);
-      } else {
-        context.drawImage(this.img, 1960, 0, 100, 100, x, y, w, h);
-      }
-    }
-  }
-
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
-  const config = {
-    canvas_width: 600,
-    canvas_height: 300,
-  };
-
-  const sprite = new Sprite();
-
-  const init = () => {
-    sprite.prepare(() => {
-      window.requestAnimationFrame(draw_frame);
-    });
-    canvas.width = config.canvas_width;
-    canvas.height = config.canvas_height;
-
-  };
-
-  const draw_frame = () => {
-    ctx.clearRect(0, 0, config.canvas_width, config.canvas_height);
-    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-    ctx.fillRect(0, 0, config.canvas_width, config.canvas_height);
-
-    sprite.trex.draw(ctx, 0, 0, 100, 100);
-    sprite.trex.forawrd();
-    // window.requestAnimationFrame(draw_frame);
-  };
-
-  init();
-</script>
-
-<script src="./dist/main.js"></script>
-
+  <body></body>
+  <script src="./dist/main.js"></script>
 </html>
